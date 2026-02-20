@@ -29,10 +29,27 @@ class UseCase3PalindromeCheckerApp{
         for(int i=word.length()-1;i>=0;i--){
             rev=rev+word.charAt(i);
         }
-        if(word==rev){
+        if(rev.equals(word)){
             c3=true;
         }
         System.out.println(c3);
+    }
+}
+
+class UseCase4PalindromeCheckerApp{
+    void uc4check(String wor){
+        char[] chars=wor.toCharArray();
+        int start=0;
+        int end=chars.length-1;
+        boolean ispalindrome=false;
+        while(start<end){
+            if(chars[start]==chars[end]){
+                ispalindrome=true;
+                start++;
+                end--;
+            }
+        }
+        System.out.println(ispalindrome);
     }
 }
 
@@ -43,8 +60,10 @@ public class PalindromeChecker {
         UseCase2PalindromeCheckerApp uc2=new UseCase2PalindromeCheckerApp();
         uc2.uc2check();
         UseCase3PalindromeCheckerApp uc3=new UseCase3PalindromeCheckerApp();
-        String wrd="";
+        String wrd="dad";
         uc3.uc3check(wrd);
+        UseCase4PalindromeCheckerApp uc4=new UseCase4PalindromeCheckerApp();
+        uc4.uc4check(wrd);
 
     }
 }
