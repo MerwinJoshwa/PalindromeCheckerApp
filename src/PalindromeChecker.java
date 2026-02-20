@@ -1,6 +1,5 @@
 
-import java.util.Stack;
-import java.util.stack;
+import java.util.*;
 
 class UseCase1PalindromeCheckerApp {
 
@@ -81,6 +80,31 @@ class UseCase5PalindromeCheckerApp {
     }
 }
 
+class UseCase6PalindromeCheckerApp {
+
+    void uc6check(String input) {
+
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : input.toCharArray()) {
+            queue.add(c);
+            stack.push(c);
+        }
+
+        boolean isPalindrome = true;
+
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        System.out.println(isPalindrome);
+
+    }
+}
+
 public class PalindromeChecker {
 
     public static void main(String[] args) {
@@ -89,11 +113,13 @@ public class PalindromeChecker {
         UseCase2PalindromeCheckerApp uc2 = new UseCase2PalindromeCheckerApp();
         uc2.uc2check();
         UseCase3PalindromeCheckerApp uc3 = new UseCase3PalindromeCheckerApp();
-        String wrd = "noon";
+        String wrd = "civic";
         uc3.uc3check(wrd);
         UseCase4PalindromeCheckerApp uc4 = new UseCase4PalindromeCheckerApp();
         uc4.uc4check(wrd);
         UseCase5PalindromeCheckerApp uc5 = new UseCase5PalindromeCheckerApp();
         uc5.uc5check(wrd);
+        UseCase6PalindromeCheckerApp uc6 = new UseCase6PalindromeCheckerApp();
+        uc6.uc6check(wrd);
     }
 }
