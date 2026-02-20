@@ -5,10 +5,28 @@ class UseCase1PalindromeCheckerApp{
     }
 }
 
+class UseCase2PalindromeCheckerApp{
+    String text="madam";
+    void uc2check(){
+        char[] chararray =text.toCharArray();
+        boolean ch=false;
+        for(int i=0;i<=text.length()/2;i++){
+            for(int j=text.length()-1;j>=text.length()/2;j--){
+                if(chararray[i]==chararray[j]){
+                    ch=true;
+                }
+            }
+        }
+        System.out.println(ch);
+    }
+}
+
 public class PalindromeChecker {
     public static void main(String[]args){
         UseCase1PalindromeCheckerApp welcome=new UseCase1PalindromeCheckerApp();
         welcome.display_welcome();
+        UseCase2PalindromeCheckerApp uc2=new UseCase2PalindromeCheckerApp();
+        uc2.uc2check();
 
     }
 }
