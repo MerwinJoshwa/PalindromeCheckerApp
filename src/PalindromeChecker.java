@@ -19,7 +19,7 @@ class UseCase2PalindromeCheckerApp{
                 }
             }
         }
-        System.out.println(ch);
+        System.out.println("Palindrome checker by UC2: "+ch);
     }
 }
 
@@ -33,7 +33,7 @@ class UseCase3PalindromeCheckerApp{
         if(rev.equals(word)){
             c3=true;
         }
-        System.out.println(c3);
+        System.out.println("Palindrome checker by UC3: " +c3);
     }
 }
 
@@ -50,7 +50,7 @@ class UseCase4PalindromeCheckerApp{
                 end--;
             }
         }
-        System.out.println(ispalindrome);
+        System.out.println("Palindrome checker by UC4: "+ispalindrome);
     }
 }
 
@@ -69,7 +69,7 @@ class UseCase5PalindromeCheckerApp {
                 ispalindrome = true;
             }
         }
-        System.out.println(ispalindrome);
+        System.out.println("Palindrome checker by UC5: " +ispalindrome);
 
     }
 }
@@ -94,7 +94,7 @@ class UseCase6PalindromeCheckerApp {
                 break;
             }
         }
-        System.out.println(isPalindrome);
+        System.out.println("Palindrome checker by UC6: " +isPalindrome);
 
     }
 }
@@ -117,7 +117,7 @@ class UseCase7PalindromeCheckerApp {
                 break;
             }
         }
-        System.out.println(isPalindrome);
+        System.out.println("Palindrome checker by UC7: "+isPalindrome);
 
     }
 }
@@ -135,7 +135,24 @@ class UseCase8PalindromeCheckerApp{
                 break;
             }
         }
-        System.out.println(isPalindrome);
+        System.out.println("Palindrome checker by UC8: "+isPalindrome);
+    }
+}
+
+class UseCase9PalindromeCheckerApp{
+    boolean uc9check(String input,int start,int end){
+        boolean isPalindrome=false;
+        while(start<end) {
+            if (input.charAt(start) == input.charAt(end)) {
+                isPalindrome = true;
+
+                start = start + 1;
+                end = end - 1;
+                uc9check(input, start, end);
+
+            }
+        }
+        return isPalindrome;
     }
 }
 
@@ -148,7 +165,7 @@ public class PalindromeChecker {
         UseCase2PalindromeCheckerApp uc2=new UseCase2PalindromeCheckerApp();
         uc2.uc2check();
         UseCase3PalindromeCheckerApp uc3=new UseCase3PalindromeCheckerApp();
-        String wrd="level";
+        String wrd="madam";
         uc3.uc3check(wrd);
         UseCase4PalindromeCheckerApp uc4=new UseCase4PalindromeCheckerApp();
         uc4.uc4check(wrd);
@@ -160,6 +177,8 @@ public class PalindromeChecker {
         uc7.uc7check(wrd);
         UseCase8PalindromeCheckerApp uc8=new UseCase8PalindromeCheckerApp();
         uc8.uc8check(wrd);
+        UseCase9PalindromeCheckerApp uc9=new UseCase9PalindromeCheckerApp();
+        System.out.println("Palindrome checker by UC9: " +uc9.uc9check(wrd,0,wrd.length()-1));
 
 
 
