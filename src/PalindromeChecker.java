@@ -1,37 +1,48 @@
 import java.util.*;
 
+interface PalindromeStrategy {
+    boolean check(String input);
+}
 
+class DequeStrategy implements PalindromeStrategy {
+    public boolean check(String input) {
+        Deque<Character> deque = new ArrayDeque<>();
 
-class PalindromeService {
+        for (char c : input.toCharArray())
+            deque.addLast(c);
 
-
-    public boolean checkPalindrome(String input) {
-        if (input == null) return false;
-        int start =0;
-        char[] ch=input.toCharArray();
-        int end =input.length()-1;
-        boolean ispalindrome=false;
-        while(start<end){
-            if(ch[start]==ch[end]){
-                ispalindrome=true;
-            }
-            start++;
-            end--;
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast()))
+                return false;
         }
-        return ispalindrome;
-
+        return true;
     }
 }
+
+class UseCase12PalindromeChecker {
+    PalindromeStrategy strategy;
+
+    UseCase12PalindromeChecker(PalindromeStrategy strategy) {
+        this.strategy = strategy;
+    }
+
+    boolean checkPalindrome(String input) {
+        return strategy.check(input);
+    }
+}
+
 public class PalindromeChecker {
-    public static void main(String[] args) {
-        PalindromeService service = new PalindromeService();
 
-        String test1 = "madam";
-        System.out.println("" + service.checkPalindrome(test1));
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String input = sc.nextLine();
+
+        PalindromeStrategy ob1 = new DequeStrategy();
+        UseCase12PalindromeChecker ob2 = new UseCase12PalindromeChecker(ob1);
+
+        if (ob2.checkPalindrome(input))
+            System.out.println("Palindrome");
+        else
+            System.out.println("Not a Palindrome");
     }
 }
-
-
-
-
-
