@@ -1,184 +1,28 @@
 import java.util.*;
 
-class UseCase1PalindromeCheckerApp{
-    void display_welcome(){
-        System.out.println("Welcome to the Palindrome Checker Management System");
 
-    }
-}
+class UseCase10PalindromeCheckerApp{
+        public static boolean uc10check(String input) {
+            if (input == null) return false;
+            String normalized = input.toLowerCase().replaceAll("[^a-z0-9]", "");
 
-class UseCase2PalindromeCheckerApp{
-    String text="madam";
-    void uc2check(){
-        char[] chararray =text.toCharArray();
-        boolean ch=false;
-        for(int i=0;i<=text.length()/2;i++){
-            for(int j=text.length()-1;j>=text.length()/2;j--){
-                if(chararray[i]==chararray[j]){
-                    ch=true;
-                }
-            }
-        }
-        System.out.println("Palindrome checker by UC2: "+ch);
-    }
-}
+            String reversed = new StringBuilder(normalized).reverse().toString();
 
-class UseCase3PalindromeCheckerApp{
-    void uc3check(String word){
-        String rev="";
-        boolean c3=false;
-        for(int i=word.length()-1;i>=0;i--){
-            rev=rev+word.charAt(i);
-        }
-        if(rev.equals(word)){
-            c3=true;
-        }
-        System.out.println("Palindrome checker by UC3: " +c3);
-    }
-}
-
-class UseCase4PalindromeCheckerApp{
-    void uc4check(String wor){
-        char[] chars=wor.toCharArray();
-        int start=0;
-        int end=chars.length-1;
-        boolean ispalindrome=false;
-        while(start<end){
-            if(chars[start]==chars[end]){
-                ispalindrome=true;
-                start++;
-                end--;
-            }
-        }
-        System.out.println("Palindrome checker by UC4: "+ispalindrome);
-    }
-}
-
-class UseCase5PalindromeCheckerApp {
-
-    Stack<Character> stack = new Stack<>();
-
-    void uc5check(String word) {
-        char[] ch = word.toCharArray();
-        boolean ispalindrome = false;
-        for (char c : word.toCharArray()) {
-            stack.push(c);
-        }
-        for (int i = 0; i < word.length(); i++) {
-            if (stack.pop() == ch[i]) {
-                ispalindrome = true;
-            }
-        }
-        System.out.println("Palindrome checker by UC5: " +ispalindrome);
-
-    }
-}
-
-class UseCase6PalindromeCheckerApp {
-
-    void uc6check(String input) {
-
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
-
-        for (char c : input.toCharArray()) {
-            queue.add(c);
-            stack.push(c);
+            return normalized.equals(reversed);
         }
 
-        boolean isPalindrome = true;
-
-        while (!queue.isEmpty()) {
-            if (!queue.remove().equals(stack.pop())) {
-                isPalindrome = false;
-                break;
-            }
-        }
-        System.out.println("Palindrome checker by UC6: " +isPalindrome);
-
-    }
-}
-
-class UseCase7PalindromeCheckerApp {
-
-    void uc7check(String input) {
-
-        Deque<Character> deque = new ArrayDeque<>();
-
-        for (char c : input.toCharArray()) {
-            deque.addLast(c);
-        }
-
-        boolean isPalindrome = true;
-
-        while (deque.size() > 1) {
-            if (!deque.removeFirst().equals(deque.removeLast())) {
-                isPalindrome = false;
-                break;
-            }
-        }
-        System.out.println("Palindrome checker by UC7: "+isPalindrome);
-
-    }
-}
-
-class UseCase8PalindromeCheckerApp{
-    void uc8check(String input){
-        LinkedList<Character> list=new LinkedList<>();
-        for(char c:input.toCharArray()){
-            list.add(c);
-        }
-        boolean isPalindrome=false;
-        while(list.size()>1){
-            if(list.getFirst()==list.getLast()){
-                isPalindrome=true;
-                break;
-            }
-        }
-        System.out.println("Palindrome checker by UC8: "+isPalindrome);
-    }
-}
-
-class UseCase9PalindromeCheckerApp{
-    boolean uc9check(String input,int start,int end){
-        boolean isPalindrome=false;
-        while(start<end) {
-            if (input.charAt(start) == input.charAt(end)) {
-                isPalindrome = true;
-
-                start = start + 1;
-                end = end - 1;
-                uc9check(input, start, end);
-
-            }
-        }
-        return isPalindrome;
-    }
 }
 
 
 
 public class PalindromeChecker {
     public static void main(String[]args){
-        UseCase1PalindromeCheckerApp welcome=new UseCase1PalindromeCheckerApp();
-        welcome.display_welcome();
-        UseCase2PalindromeCheckerApp uc2=new UseCase2PalindromeCheckerApp();
-        uc2.uc2check();
-        UseCase3PalindromeCheckerApp uc3=new UseCase3PalindromeCheckerApp();
-        String wrd="madam";
-        uc3.uc3check(wrd);
-        UseCase4PalindromeCheckerApp uc4=new UseCase4PalindromeCheckerApp();
-        uc4.uc4check(wrd);
-        UseCase5PalindromeCheckerApp uc5=new UseCase5PalindromeCheckerApp();
-        uc5.uc5check(wrd);
-        UseCase6PalindromeCheckerApp uc6=new UseCase6PalindromeCheckerApp();
-        uc6.uc6check(wrd);
-        UseCase7PalindromeCheckerApp uc7=new UseCase7PalindromeCheckerApp();
-        uc7.uc7check(wrd);
-        UseCase8PalindromeCheckerApp uc8=new UseCase8PalindromeCheckerApp();
-        uc8.uc8check(wrd);
-        UseCase9PalindromeCheckerApp uc9=new UseCase9PalindromeCheckerApp();
-        System.out.println("Palindrome checker by UC9: " +uc9.uc9check(wrd,0,wrd.length()-1));
+
+        String test = "A man a plan a canal Panama";
+        UseCase10PalindromeCheckerApp uc10=new UseCase10PalindromeCheckerApp();
+        System.out.println("Palindrome Checker by UC10: "+uc10.uc10check(test));
+
+
 
 
 
