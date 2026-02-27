@@ -1,3 +1,4 @@
+import java.util.*;
 
 class UseCase1PalindromeCheckerApp{
     void display_welcome(){
@@ -53,6 +54,93 @@ class UseCase4PalindromeCheckerApp{
     }
 }
 
+class UseCase5PalindromeCheckerApp {
+
+    Stack<Character> stack = new Stack<>();
+
+    void uc5check(String word) {
+        char[] ch = word.toCharArray();
+        boolean ispalindrome = false;
+        for (char c : word.toCharArray()) {
+            stack.push(c);
+        }
+        for (int i = 0; i < word.length(); i++) {
+            if (stack.pop() == ch[i]) {
+                ispalindrome = true;
+            }
+        }
+        System.out.println(ispalindrome);
+
+    }
+}
+
+class UseCase6PalindromeCheckerApp {
+
+    void uc6check(String input) {
+
+        Queue<Character> queue = new LinkedList<>();
+        Stack<Character> stack = new Stack<>();
+
+        for (char c : input.toCharArray()) {
+            queue.add(c);
+            stack.push(c);
+        }
+
+        boolean isPalindrome = true;
+
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        System.out.println(isPalindrome);
+
+    }
+}
+
+class UseCase7PalindromeCheckerApp {
+
+    void uc7check(String input) {
+
+        Deque<Character> deque = new ArrayDeque<>();
+
+        for (char c : input.toCharArray()) {
+            deque.addLast(c);
+        }
+
+        boolean isPalindrome = true;
+
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
+                isPalindrome = false;
+                break;
+            }
+        }
+        System.out.println(isPalindrome);
+
+    }
+}
+
+class UseCase8PalindromeCheckerApp{
+    void uc8check(String input){
+        LinkedList<Character> list=new LinkedList<>();
+        for(char c:input.toCharArray()){
+            list.add(c);
+        }
+        boolean isPalindrome=false;
+        while(list.size()>1){
+            if(list.getFirst()==list.getLast()){
+                isPalindrome=true;
+                break;
+            }
+        }
+        System.out.println(isPalindrome);
+    }
+}
+
+
+
 public class PalindromeChecker {
     public static void main(String[]args){
         UseCase1PalindromeCheckerApp welcome=new UseCase1PalindromeCheckerApp();
@@ -60,10 +148,20 @@ public class PalindromeChecker {
         UseCase2PalindromeCheckerApp uc2=new UseCase2PalindromeCheckerApp();
         uc2.uc2check();
         UseCase3PalindromeCheckerApp uc3=new UseCase3PalindromeCheckerApp();
-        String wrd="dad";
+        String wrd="level";
         uc3.uc3check(wrd);
         UseCase4PalindromeCheckerApp uc4=new UseCase4PalindromeCheckerApp();
         uc4.uc4check(wrd);
+        UseCase5PalindromeCheckerApp uc5=new UseCase5PalindromeCheckerApp();
+        uc5.uc5check(wrd);
+        UseCase6PalindromeCheckerApp uc6=new UseCase6PalindromeCheckerApp();
+        uc6.uc6check(wrd);
+        UseCase7PalindromeCheckerApp uc7=new UseCase7PalindromeCheckerApp();
+        uc7.uc7check(wrd);
+        UseCase8PalindromeCheckerApp uc8=new UseCase8PalindromeCheckerApp();
+        uc8.uc8check(wrd);
+
+
 
     }
 }
